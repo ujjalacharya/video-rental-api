@@ -1,16 +1,8 @@
 const router = require('express').Router();
 const Joi = require('joi');
-const mongoose = require('mongoose');
-
 //Import Model
 const Genre = require('../../models/Genre');
 
-//Connection to the database
-mongoose.connect('mongodb://localhost:27017/vidly', { useNewUrlParser: true })
-    .then(() => {
-        console.log('Connected to the datbase...')
-    })
-    .catch(err => console.log(err))
 
 //RESTFUL routes
 

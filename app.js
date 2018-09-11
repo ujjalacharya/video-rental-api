@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 //require the routes
 const genres = require('./controller/routes/genres')
 const users = require('./controller/routes/users')
+const movies = require('./controller/routes/movies')
 
 app.use(express.json());
 
@@ -21,6 +22,7 @@ mongoose.connect('mongodb://localhost:27017/vidly', { useNewUrlParser: true })
 //use genre route
 app.use('/api/genres', genres);
 app.use('/api/users', users);
+app.use('/api/movies', movies);
 
 app.listen(PORT, () => {
     console.log(`App started at ${PORT}`)

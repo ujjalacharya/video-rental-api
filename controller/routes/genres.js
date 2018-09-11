@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const Joi = require('joi');
 //Import Model
-const Genre = require('../../models/Genre');
+const {Genre} = require('../../models/Genre');
 
 
 //RESTFUL routes

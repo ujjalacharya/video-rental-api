@@ -11,6 +11,7 @@ const genres = require('./controller/routes/genres')
 const customers = require('./controller/routes/customers')
 const movies = require('./controller/routes/movies')
 const rentals = require('./controller/routes/rentals')
+const users = require('./controller/routes/users')
 
 app.use(express.json());
 
@@ -27,6 +28,7 @@ app.use('/api/genres', genres);
 app.use('/api/customers', customers);
 app.use('/api/movies', movies);
 app.use('/api/rentals', rentals);
+app.use('/api/users', users);
 
 app.listen(PORT, () => {
     console.log(`App started at ${PORT}`)

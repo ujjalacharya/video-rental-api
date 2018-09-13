@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const {Genre} =require('../../models/Genre');
-const Movie = require('../../models/Movie');
+const {Movie, validateMovie} = require('../../models/Movie');
 const Joi = require('joi');
 
 router.get('/', async (req, res)=>{
@@ -9,7 +9,7 @@ router.get('/', async (req, res)=>{
 })
 
 router.post('/', async (req, res)=>{
-    const { error } = validationHandler(req.body)
+    const { error } = validateMovie(req.body)
     if (error) return res.status(400).send(error.details[0].message)
 
     const genre =await Genre.findById(req.body.genreId);
@@ -30,13 +30,3 @@ router.post('/', async (req, res)=>{
 })
 
 module.exports = router;
-
-function validationHandler(movie) {
-    const schema = {
-        title: Joi.string().required().min(3),
-        numberInStock: Joi.number(),
-        dailyRentalRate: Joi.number(),
-        genreId: Joi.string().required()
-    }
-    return Joi.validate(movie, schema)
-}

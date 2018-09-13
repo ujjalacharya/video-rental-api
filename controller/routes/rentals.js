@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const { Rental, validateRental } = require("../../models/Rental");
 const { Customer } = require("../../models/Customer");
-const Movie = require("../../models/Movie");
+const {Movie} = require("../../models/Movie");
 const mongoose = require("mongoose");
 const Fawn = require("fawn");
 
@@ -21,7 +21,6 @@ router.post("/", async (req, res) => {
   if (!customer) return res.status(400).send("Invalid Customer");
 
   const movie = await Movie.findById(req.body.movieId);
-  console.log(movie)
   if (!movie) return res.status(400).send("Invalid Movie");
 
   if (movie.numberInStock === 0)

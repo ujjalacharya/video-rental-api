@@ -46,4 +46,6 @@ function validateRental(rental) {
   return Joi.validate(rental, schema);
 }
 
+exports.validateRental = validateRental
+
 exports.Rental = mongoose.model("Rental", RentalSchema);
